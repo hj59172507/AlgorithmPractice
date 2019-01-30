@@ -12,8 +12,19 @@ nums2 = [3,4]
 
 #Assume arr already sorted, hence using binary search
 #return the index of element imediately less than target
-def findIndexOfElementLessThan(arr, tar):
-	return 0
+def findIndexOfElementLessThan(arr, tar, l, r):
+	if(l == r):
+		return r
+	mid = (l + r) // 2
+	if(arr[mid] <= tar):
+		if(r > mid):
+			if(arr[mid+1] > tar):
+				return mid
+			else:
+				return findIndexOfElementLessThan(arr, tar, mid+1, r)
+		else:
+			return r
+	return findIndexOfElementLessThan(arr, tar, l, mid)
 
 #reduce the question to finding the nth element in two arrays
 def findNthElementInTwoSortedArrays(arr1, arr2, nth, evenLength):
