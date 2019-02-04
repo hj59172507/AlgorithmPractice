@@ -1,0 +1,22 @@
+Problem:
+Find a schedule of jobs such that the sum of all job_weight * job_time_completion is minimum
+Input:
+a list of jobs, each job has a weight and length
+
+Greedy algorithm brief description:
+find the ratio of weight and length, sorted ratios and create a schedule with higher ratio has higher priority. The resulting schedule will be optimal.
+
+Lets call our greedy schedule s, to prove that s is optimal by contraction, suppose there is another schedule s* that is different from s such that it has lower total cost.
+We can label each job in s from 1 to n(assume we have n jobs in total, thus s will look like a schedule of non-decresing jobs), and consider s* as some reodering of the jobs with labels unchanged. Then there is at least two jobs, job_j and job_i(job_j come before job_i, where j,i are labels) that are consective and i <= j in s*. (else s* will be exactly the same as s and proof is done)
+
+For all jobs come before job_i and after job_j, their costs are the same for both s and s*.
+The cost increse incur is length_j * weight_i
+and the cost decrese is length_i * weight_j
+Since we sorted s base on weight / length, if i <= j, then we know weight_i / length_i >= weight_j / length_j, 
+and it follows that length_j * weight_i >= weight_j * length_i
+which is equalenvently saying the cost increase is at leaset as much as cost decrese.
+Hence s* cannot have a lower total cost than s.
+
+
+
+
