@@ -9,3 +9,24 @@ For example, the third line of the file is "2 3 -8874", indicating that there is
 
 edge costs are not necessary positive, nor distinct.
 '''
+
+#process input data
+remainV, processedV, edges, edgesInMST, edgeCosts = set(), {}, {}, {}, {}
+inputFile = 'edges.txt'
+with open(inputFile) as edgesFile:
+	edgesAndCosts = edgesFile.readlines()
+	for edgeAndCost in edgesAndCosts:
+		v1, v2, cost = edgeAndCost.split()
+		remainV.update([v1,v2])
+		if(v1 in edges):
+			edges[v1].append(v2)
+		else:
+			edges[v1] = [v2]
+		if(v2 in edges):
+			edges[v2].append(v1)
+		else:
+			edges[v2] = [v1]
+		edgeCosts[v1+'-'+v2] = int(cost)
+		edgeCosts[v2+'-'+v1] = int(cost)
+
+
