@@ -11,7 +11,7 @@ edge costs are not necessary positive, nor distinct.
 '''
 
 #process input data
-remainV, processedV, edges, edgesInMST, edgeCosts = set(), {}, {}, {}, {}
+remainV, processedV, edges, edgesInMST, edgeCosts = set(), set(), {}, {}, []
 inputFile = 'edges.txt'
 with open(inputFile) as edgesFile:
 	edgesAndCosts = edgesFile.readlines()
@@ -26,7 +26,18 @@ with open(inputFile) as edgesFile:
 			edges[v2].append(v1)
 		else:
 			edges[v2] = [v1]
-		edgeCosts[v1+'-'+v2] = int(cost)
-		edgeCosts[v2+'-'+v1] = int(cost)
+		edgeCosts.append((v1+'-'+v2,int(cost)))
+		edgeCosts.append((v2+'-'+v1,int(cost)))
 
+#set up intial state for Prims algorithm
+initialNode = remainV.pop()
+processedV.add(initialNode)
+#set up intial heap using only the initial node
 
+#perform Prims algorithm 
+while(len(remainV) != 0):
+	#pop the heap, that is our next node n in MST
+	
+	#add n to processedV, remove it from remainV
+
+	#for any node w in remainV that is connected to n, if w is in heap, pop, revaluate, and push back to the heap
