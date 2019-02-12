@@ -4,131 +4,130 @@ Problem: try to find all medians as integer are inserting into array
 Algorithm: keep a max heap for lower half of the array, and a min heap for higher half of the array
 So the we can always retrive median in O(1), total cost should be nlog(n)
 '''
-def swap(heap, p1, p2):
-	heap[p1] += heap[p2]
-	heap[p2] = heap[p1] - heap[p2]
-	heap[p1] -= heap[p2] 
-
-def AddToHeapMax(heap, value):
-	heap.append(value)
-	size = len(heap)
-	parentPos = size // 2
-	childValue = value
-	childPos = size
-	parentValue = heap[parentPos - 1]
-	if(parentPos >= 0):
-		while(childValue > parentValue):
-			swap(heap, childPos - 1, parentPos - 1)
-			childPos = parentPos
-			parentPos = parentPos // 2
-			if(parentPos <= 0):
-				break
-			childValue = heap[childPos - 1]
-			parentValue = heap[parentPos - 1]
-
-def AddToHeapMin(heap, value):
-	heap.append(value)
-	size = len(heap)
-	parentPos = size // 2
-	childValue = value
-	childPos = size
-	parentValue = heap[parentPos - 1]
-	if(parentPos >= 0):
-		while(childValue < parentValue):
-			swap(heap, childPos - 1, parentPos - 1)
-			childPos = parentPos
-			parentPos = parentPos // 2
-			if(parentPos <= 0):
-				break
-			childValue = heap[childPos - 1]
-			parentValue = heap[parentPos - 1]
-
-def ExtractMax(heap):
-	Max = heap[0]
-	swap(heap, 0, len(heap)-1)
-	del heap[len(heap)-1]
-	sourcePos = 1
-	sourceLeftChild = sourcePos*2
-	sourceRightChild = sourceLeftChild + 1
+class MinHeap:
+	'''MinHeap class for numeric list'''
+	def __init__(self):
+		self.heap = []
 	
-	while(True):
-		#check if there is left and right child
-		if(len(heap) < sourceLeftChild):
-			break
-		elif(len(heap) < sourceRightChild):
-			if(heap[sourcePos-1] < heap[sourceLeftChild-1]):
-				swap(heap, sourcePos-1, sourceLeftChild-1)
-				break
-			else:
-				break
+	#get parent index from childIndex
+	def parent(self, childIndex):
+		if(childIndex == 0):
+			return 0
+		return (childIndex+1)//2-1
 
-		#check if we need to swap with children
-		if(heap[sourcePos-1] < max(heap[sourceLeftChild-1], heap[sourceRightChild-1])):
-			if(heap[sourceLeftChild-1] > heap[sourceRightChild-1]):
-				swap(heap, sourcePos-1, sourceLeftChild-1)
-				sourcePos = sourceLeftChild
-			else:
-				swap(heap, sourcePos-1, sourceRightChild-1)
-				sourcePos = sourceRightChild
-			sourceLeftChild = sourcePos*2
-			sourceRightChild = sourceLeftChild + 1
+	#get left child index from parentIndex
+	def left(self, parentIndex):
+		return (parentIndex*2)+1
+
+	#get right child index from parentIndex
+	def right(self, parentIndex):
+		return (parentIndex*2)+2
+
+	#move element at index i down to proper place so heap properity is maintained
+	def heapifyDown(self, i):
+		left, right, smallest = self.left(i), self.right(i), i
+		if(left < len(self.heap) and self.heap[left] < self.heap[i]):
+			smallest = left
+		if(right < len(self.heap) and self.heap[right] < self.heap[smallest]):
+			smallest = right
+		if(smallest != i):
+			self.swap(smallest, i)
+			self.heapifyDown(smallest)
+
+	#move element at index i up to proper place so heap properity is maintained
+	def heapifyUp(self, i):
+		parent = self.parent(i)
+		if(i != parent and self.heap[i] < self.heap[parent]):
+			self.swap(i, parent)
+			self.heapifyUp(parent)
+
+	#swap values of elements at heap index x and y
+	def swap(self, x, y):
+		self.heap[x], self.heap[y] = self.heap[y], self.heap[x]
+
+	#heapity an unordered array, assuming arr is integer array
+	def heapifyArray(self, arr):
+		self.heap = arr
+		i = len(self.heap)//2
+		while(i > 0):
+			self.heapifyDown(i)
+			i -= 1
+
+	#insert an element to heap, and maintain heap property
+	def insert(self, element):
+		self.heap.append(element)
+		self.heapifyUp(len(self.heap)-1)
+
+	#return the minimum element in the heap without removing it
+	def peek(self):
+		if(len(self.heap) > 0):
+			return self.heap[0]
 		else:
-			break
-	return Max
+			return None
 
-def ExtractMin(heap):
-	Min = heap[0]
-	swap(heap, 0, len(heap)-1)
-	del heap[len(heap)-1]
-	sourcePos = 1
-	sourceLeftChild = sourcePos*2
-	sourceRightChild = sourceLeftChild + 1
-	
-	while(True):
-		#check if there is left and right child
-		if(len(heap) < sourceLeftChild):
-			break
-		elif(len(heap) < sourceRightChild):
-			if(heap[sourcePos-1] > heap[sourceLeftChild-1]):
-				swap(heap, sourcePos-1, sourceLeftChild-1)
-				break
-			else:
-				break
-
-		#check if we need to swap with children
-		if(heap[sourcePos-1] > min(heap[sourceLeftChild-1], heap[sourceRightChild-1])):
-			if(heap[sourceLeftChild-1] < heap[sourceRightChild-1]):
-				swap(heap, sourcePos-1, sourceLeftChild-1)
-				sourcePos = sourceLeftChild
-			else:
-				swap(heap, sourcePos-1, sourceRightChild-1)
-				sourcePos = sourceRightChild
-			sourceLeftChild = sourcePos*2
-			sourceRightChild = sourceLeftChild + 1
+	#delete an element in index i from heap
+	def deleteAt(self, i):
+		if(i != len(self.heap)-1):
+			self.swap(i, len(self.heap)-1)
+			del self.heap[len(self.heap)-1]
+			self.heapifyDown(i)
 		else:
-			break
-	return Min
+			del self.heap[i]
+
+	#delete an element in heap, return  -1 if not found
+	def deleteEle(self, element):
+		elementIndex = self.heap.index(element)
+		self.deleteAt(elementIndex)
+
+	#return the minimum element in the heap and remove it
+	def pop(self):
+		if(len(self.heap) > 0):
+			result = self.heap[0]
+			self.deleteAt(0)
+			return result
+		else:
+			return None
+
+	#print the heap
+	def __str__(self):
+		s = ''
+		for ele in self.heap:
+			s += str(ele) + " "
+		return s
+
+	def size(self):
+		return len(self.heap)
+
 
 f = open("median.txt","r")
-heapLow = []
-heapHigh = []
+
+#heapLow and heapHigh store the lower half of the elements and higher half the elements respectively
+#assuming all input are postivei, heapLow store the negative of real value so we have use minHeap for both heap
+heapLow = MinHeap()
+heapHigh = MinHeap()
 medians = []
+
 for value in f.read().splitlines():
 	insertValue = int(value)
-	if(len(heapLow) == len(heapHigh)):
-		if(len(heapHigh) >= 1 and insertValue > heapHigh[0]):
-			higherMin = ExtractMin(heapHigh)
-			AddToHeapMin(heapHigh, insertValue)
-			AddToHeapMax(heapLow, higherMin)
+	#if leapLow and heapHigh have same size
+	if(heapLow.size() == heapHigh.size()):
+		#if first element of heapHigh is less than insertValue, pop the min from heapHigh and insert it to heapLow
+		#and insert insertValue into heapHigh
+		if(heapHigh.size() >= 1 and insertValue > heapHigh.peek()):
+			higherMin = heapHigh.pop()
+			heapHigh.insert(insertValue)
+			heapLow.insert(-higherMin)
 		else:
-			AddToHeapMax(heapLow, insertValue)
+			heapLow.insert(-insertValue)
 	else:
-		if(len(heapLow) >= 1 and insertValue < heapLow[0]):
-			lowerMax = ExtractMax(heapLow)
-			AddToHeapMax(heapLow, insertValue)
-			AddToHeapMin(heapHigh, lowerMax)
+		#if max element in heapLow is higher than insertValue, then pop the max from heapLow and
+		#insert it to heapHigh, and then insert the insertValue to heapLow
+		if(heapLow.size() >= 1 and insertValue < -heapLow.peek()):
+			lowerMax = -heapLow.pop()
+			heapHigh.insert(lowerMax)
+			heapLow.insert(-insertValue)
 		else:
-			AddToHeapMin(heapHigh, insertValue)
-	medians.append(heapLow[0])
+			heapHigh.insert(insertValue)
+	medians.append(-heapLow.peek())
 
 print(sum(medians) / len(medians))
