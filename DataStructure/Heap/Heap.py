@@ -43,7 +43,7 @@ class MinHeap:
 	def heapifyArray(self, arr):
 		self.heap = arr
 		i = len(self.heap)//2
-		while(i > 0):
+		while(i >= 0):
 			self.heapifyDown(i)
 			i -= 1
 
