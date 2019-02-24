@@ -68,7 +68,7 @@ You may assume all four edges of the grid are all surrounded by water.
         return d >= 0 ;
     }
 
-//solution 2: using DFS
+//solution 2: using BFS
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
           return 0;
