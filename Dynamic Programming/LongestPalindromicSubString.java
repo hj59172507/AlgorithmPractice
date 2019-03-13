@@ -45,7 +45,38 @@ class Solution {
             }
         }   
         return s.substring(left, right);
-       
     }
 }
 
+//second approach, expand palindrome given a center time O(n^2) space O(1)
+class Solution {
+    public String longestPalindrome(String s) {
+        int length = s.length();
+        if(length<2)
+            return s;
+        int max = 1, left = 0, right = 1;
+        for(int i=0;i<s.length()-1;i++){
+            int oddLength = extendMid(s, i, i);
+            int evenLength = extendMid(s, i, i+1);
+            if(oddLength > evenLength && oddLength > max){
+                max = oddLength;
+                left = i - (oddLength-1)/2;
+                right = i + (oddLength-1)/2+1;
+            }
+            else if(evenLength > oddLength && evenLength > max){
+                max = evenLength;
+                left = i - (evenLength-1)/2;
+                right = i + (evenLength-1)/2+2;
+            }
+        }
+        return s.substring(left, right);
+    }
+    
+    public int extendMid(String s, int left, int right){
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
+}
