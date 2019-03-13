@@ -26,3 +26,22 @@ class Solution {
         return resultHead;
     }
 }
+
+//recursive approach
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode result = null, resultHead = null;
+        return helper(head, result, resultHead);
+    }
+    
+    public ListNode helper(ListNode head, ListNode result, ListNode resultHead){
+        if(head != null){
+            resultHead = new ListNode(head.val);
+            resultHead.next = result;
+            result = resultHead;
+            head = head.next;
+            return helper(head, result, resultHead);
+        }
+        return resultHead;
+    }
+}
