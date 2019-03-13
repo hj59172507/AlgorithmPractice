@@ -53,3 +53,20 @@ class Solution {
     }
 }
 
+//linear solution based on the fact that if consectiveSum is negative, always create new subarray, time O(n), space O(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int max = nums[0], consectiveSum = nums[0];
+        for(int i=1;i<nums.length;i++){
+            if(consectiveSum < 0){
+                consectiveSum = nums[i];
+            }
+            else
+                consectiveSum += nums[i];
+            if(consectiveSum > max)
+                max = consectiveSum;
+        }
+        return max;
+    }
+
+}
