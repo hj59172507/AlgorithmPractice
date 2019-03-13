@@ -28,3 +28,28 @@ class Solution {
         return result;
     }
 }
+
+//DP approach, time O(n^2), space O(n^2)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        int max = nums[0];
+        int[][] sumArray = new int[nums.length][nums.length];
+        for(int i=0;i<nums.length;i++){
+            int end = i, start = 0;
+            while(end < nums.length){
+                if(start == end)
+                    sumArray[start][end] = nums[start];
+                else{
+                    sumArray[start][end] = sumArray[start][end-1] + nums[end];
+                }
+                if(sumArray[start][end] > max)
+                    max = sumArray[start][end];
+                end++;
+                start++;
+            }
+        }
+        return max;
+    }
+}
+
