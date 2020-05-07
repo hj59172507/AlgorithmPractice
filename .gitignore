@@ -1,5 +1,6 @@
 *
 !*.py
+!*.cs
 !*.java
 !.gitignore
 !*Proof*
