@@ -1,11 +1,6 @@
-﻿using System;
+﻿using LeetCodePractice.DataStructure.Tree;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Activation;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LeetCodePractice.DataStructure
 {
@@ -71,16 +66,5 @@ namespace LeetCodePractice.DataStructure
         }
     }
 
-    public class TreeNode
-    {
-      public int val;
-      public TreeNode left;
-      public TreeNode right;
-     public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-        {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-            }
-    }
+
 }
