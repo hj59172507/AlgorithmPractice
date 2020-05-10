@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
