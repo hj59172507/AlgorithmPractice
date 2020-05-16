@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 /*
 Given the root of a binary search tree with distinct values, modify it so that every node has a new value equal to the sum of the values of the original tree that are greater than or equal to node.val.
@@ -32,8 +34,8 @@ namespace LeetCodePractice.DataStructure.Tree
 {
     class BSTtoGST
     {
-        static void Main()
-        //static void Main1038()
+        //static void Main()
+        static void Main1038()
         {
             TreeNode root = new TreeNode(4, 
                             new TreeNode(1, new TreeNode(0), new TreeNode(2, null, new TreeNode(3))),
@@ -43,7 +45,7 @@ namespace LeetCodePractice.DataStructure.Tree
         }
         public static TreeNode BstToGst(TreeNode root)
         {
-            postOrdSum(root,0);
+            postOrdSum(root, 0);
             return root;
         }
 
