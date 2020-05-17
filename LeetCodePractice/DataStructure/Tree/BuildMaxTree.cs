@@ -31,12 +31,12 @@ namespace LeetCodePractice.DataStructure.Tree
 {
     class BuildMaxTree
     {
-        static void Main()
-        //static void Main654()
+        //static void Main()
+        static void Main654()
         {
             int[] arr = new int[] { 3,2,1,6,0,5};
             Console.Out.WriteLine(ConstructMaximumBinaryTree(arr));
-            Console.In.ReadLine();
+            Console.In.ReadLine();            
         } 
         public static TreeNode ConstructMaximumBinaryTree(int[] nums)
         {
