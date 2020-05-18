@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 /*
  * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
@@ -35,13 +36,21 @@ Find line number associated with each letter, for row number nRow, we can group 
 1. First nRow letter will have line number 1 ..... to n respectively
 2. Next nRow - 2 letter will have line number n-1 ..... to 2 repsectively
 Store them in two-d array, where arr[i] is the array for letter appeared in line i
+
+Sol2:
+Time O(n)
+Space O(n)
+
+Similar to above, except we dont bother building array for each line.
+Since each column letter and each diagonal letter is exactly 2*n - 2 letter apart, we can calcuated line of each letter in s by simply adding to first pattern. 
+
 */
 namespace LeetCodePractice.DivideAndConquer
 {
     class ZigZagConvert
     {
-        //static void Main()
-        static void Main6()
+        static void Main()
+        //static void Main6()
         {
             string s = "PAYPALISHIRING";
             int nRow = 4;
@@ -53,52 +62,31 @@ namespace LeetCodePractice.DivideAndConquer
         {
             if (numRows <= 1 || numRows >= s.Length)
                 return s;
-            List<string> lines = new List<string>();            
-            for(int i=0; i<numRows; i++)
+            var ans = new StringBuilder();
+            for (int i = 0; i < numRows; i++)
             {
-                lines.Add("");
-            }
-            int verticalCount = 1;
-            int diagonalCount = numRows-1;
-
-            foreach (char c in s)
-            {
-                if (numRows == 2)
+                int curPos = i;
+                int diaPos = 2 * numRows - 2 - i;
+                while (curPos < s.Length)
                 {
-                    lines[verticalCount - 1] += c;
-                    if (verticalCount++ == numRows)
+                    if (i == 0 || i == numRows - 1)
                     {
-                        verticalCount = 1;
-                    }
-                }
-                else
-                {
-                    if (verticalCount <= numRows)
-                    {
-                        lines[verticalCount - 1] += c;
-                        if (++verticalCount == numRows)
-                        {
-                            diagonalCount = numRows - 1;
-                        }
+                        ans.Append(s[curPos]);
                     }
                     else
                     {
-                        lines[diagonalCount - 1] += c;
-                        if (--diagonalCount == 1)
+                        //need to deal to diagonal letters
+                        ans.Append(s[curPos]);
+                        if (diaPos < s.Length)
                         {
-                            verticalCount = 1;
+                            ans.Append(s[diaPos]);
+                            diaPos += 2 * numRows - 2;
                         }
                     }
+                    curPos += 2 * numRows - 2;
                 }
             }
-            
-
-            string ans = "";
-            foreach(string str in lines)
-            {
-                ans += str;
-            }
-            return ans;
+            return ans.ToString();
         }
     }
 }

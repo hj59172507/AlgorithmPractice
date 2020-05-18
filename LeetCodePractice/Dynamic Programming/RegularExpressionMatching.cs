@@ -47,6 +47,8 @@ p = "mis*is*p*."
 Output: false
 
 Sol1 DP:
+Time O(n*m)
+Space O(n*m)
 
 Build a boolean matrix M[i][j] so that M[i][j] represent if up to ith character in s matches up to jth character in p
 1. If p.charAt(j) == s.charAt(i), then M[i][j] = M[i-1][j-1] 
