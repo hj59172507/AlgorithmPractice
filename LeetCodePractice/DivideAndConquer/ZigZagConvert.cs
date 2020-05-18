@@ -47,6 +47,7 @@ namespace LeetCodePractice.DivideAndConquer
             int nRow = 4;
             Console.Out.WriteLine(Convert(s, nRow));
             Console.In.ReadLine();
+
         }
         public static string Convert(string s, int numRows)
         {
