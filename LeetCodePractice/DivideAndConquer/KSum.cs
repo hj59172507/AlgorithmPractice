@@ -32,7 +32,8 @@ namespace LeetCodePractice.DivideAndConquer
 {
 	class KSum
     {
-		static void Main()
+		//static void Main()
+		static void Main18()
 		{
 			int[] nums = new int[] { 1, 2, 4, 8, 16, 32, 64, 128 };
 			int target = 82;
