@@ -49,8 +49,8 @@ namespace LeetCodePractice.DivideAndConquer
 {
     class ZigZagConvert
     {
-        static void Main()
-        //static void Main6()
+        //static void Main()
+        static void Main6()
         {
             string s = "PAYPALISHIRING";
             int nRow = 4;

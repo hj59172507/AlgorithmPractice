@@ -25,8 +25,8 @@ namespace LeetCodePractice.SimpleWarmUp
 {
     class ContainerWithMostWater
     {
-        static void Main()
-        //static void Main11()
+        //static void Main()
+        static void Main11()
         {
             int[] arr = new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
             Console.Out.WriteLine(MaxArea(arr));
