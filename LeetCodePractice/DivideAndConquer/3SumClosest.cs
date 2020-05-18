@@ -23,8 +23,8 @@ namespace LeetCodePractice.DivideAndConquer
 {
     class _3SumClosest
     {
-        static void Main()
-        //static void Main16()
+        //static void Main()
+        static void Main16()
         {           
             int[] nums = new int[]{1, 2, 4, 8, 16, 32, 64, 128};
             int target = 82;
