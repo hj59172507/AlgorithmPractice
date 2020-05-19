@@ -28,8 +28,8 @@ namespace LeetCodePractice.DataStructure.Heap
 {
     class MergeKListsWithHeap
     {
-        static void Main()
-        //static void Main23()
+        //static void Main()
+        static void Main23()
         {
             ListNode[] lists = new ListNode[] { new ListNode(1, new ListNode(1,new ListNode(2))),
                                                new ListNode(1, new ListNode(2,new ListNode(2)))};
