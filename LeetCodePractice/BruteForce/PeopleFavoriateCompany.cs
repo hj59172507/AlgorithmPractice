@@ -49,8 +49,8 @@ namespace LeetCodePractice.BruteForce
 {
     class PeopleFavoriateCompany
     {
-        static void Main()
-        //static void Main1452()
+        //static void Main()
+        static void Main1452()
         {
             List<IList<string>> fc = new List<IList<String>>() {new List<string>(){"leetcode","google","facebook" },
                                                                 new List<string>(){"google","microsoft" },
