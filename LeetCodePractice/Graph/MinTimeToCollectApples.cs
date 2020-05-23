@@ -43,8 +43,8 @@ namespace LeetCodePractice.Graph
 {
     class MinTimeToCollectApples
     {        
-        static void Main()
         //static void Main()
+        static void Main1443()
         {
             int n = 7;
             int[][] edges = { new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 4 }, new int[] { 1, 5 }, new int[] { 2, 3 }, new int[] { 2, 6 } };
