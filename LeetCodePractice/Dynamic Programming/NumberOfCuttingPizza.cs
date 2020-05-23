@@ -40,8 +40,8 @@ namespace LeetCodePractice.Dynamic_Programming
 {
     class NumberOfCuttingPizza
     {
-        static void Main()
-        //static void Main1444)
+        //static void Main()
+        static void Main1444()
         {
             string[] pizza = new string[] { "A..", "AAA", "..." };
             int k = 3;
