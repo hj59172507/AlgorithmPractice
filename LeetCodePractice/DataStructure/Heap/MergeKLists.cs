@@ -38,7 +38,7 @@ namespace LeetCodePractice.DataStructure.Heap
         }
         public static ListNode MergeKLists(ListNode[] lists)
         {
-            SortedList<int, Queue<ListNode>> sl = new SortedList<int, Queue<ListNode>>();            
+            SortedList<int, Queue<ListNode>> sl = new SortedList<int, Queue<ListNode>>();
             foreach (ListNode n in lists)
             {
                 ListNode temp1 = n;
