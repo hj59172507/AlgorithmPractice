@@ -47,7 +47,7 @@ namespace LeetCodePractice.DataStructure.Heap
     {
         //static void Main()
         static void Main1439()
-        {
+        {			
             int[][] mat = { new int[] {1,1,10 },
                             new int[] {2,2,9 } };
             int k = 7;
