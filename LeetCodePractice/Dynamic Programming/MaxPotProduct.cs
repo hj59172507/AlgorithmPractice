@@ -47,8 +47,8 @@ namespace LeetCodePractice.Dynamic_Programming
 {
     class MaxPotProduct
     {
-        static void Main()
-        //static void Main1458()
+        //static void Main()
+        static void Main1458()
         {
             int[] nums1 = new int[] { 1,1 }, nums2 = new int[] { -1,-1};
             Console.Out.WriteLine(MaxDotProduct(nums1, nums2));
