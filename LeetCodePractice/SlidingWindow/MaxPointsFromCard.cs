@@ -56,8 +56,8 @@ namespace LeetCodePractice.SlidingWindow
 {
     class MaxPointsFromCard
     {
-        static void Main()
-        //static void Main1423()
+        //static void Main()
+        static void Main1423()
         {
             int[] arr = new int[] { 1,2,3,4,5,6,1 };
             int k = 3;
