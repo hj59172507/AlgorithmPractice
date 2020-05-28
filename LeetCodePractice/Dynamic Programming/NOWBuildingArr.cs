@@ -54,8 +54,8 @@ namespace LeetCodePractice.Geeky
 {
     class NOWBuildingArr
     {
-        static void Main()
         //static void Main()
+        static void Main1420()
         {
             int n = 2, m = 3, k = 1;
             //int n = 37, m = 17, k = 7;
