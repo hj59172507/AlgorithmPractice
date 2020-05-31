@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.IO.Pipes;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
  * 1467. Probability of a Two Boxes Having The Same Number of Distinct Balls
@@ -71,8 +64,8 @@ namespace LeetCodePractice.Geeky
 {
     class ProbabilityOfColorBalls
     {
-        static void Main()
-        //static void Main1467()
+        //static void Main()
+        static void Main1467()
         {
             int[] balls = { 6, 6, 6, 6, 6, 6 };            
             Console.Out.WriteLine(GetProbability(balls));
