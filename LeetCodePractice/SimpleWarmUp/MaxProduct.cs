@@ -4,8 +4,8 @@ namespace LeetCodePractice.SimpleWarmUp
 {
     class MaxProduct
     {
-        static void Main()
-        //static void Main1464()
+        //static void Main()
+        static void Main1464()
         {
             int[] nums = {3, 4, 5, 2};
             Console.Out.WriteLine(MaxProduct1(nums));
