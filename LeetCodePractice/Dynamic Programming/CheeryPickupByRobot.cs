@@ -51,7 +51,7 @@ cols == grid[i].length
 0 <= grid[i][j] <= 100 
 
 Sol DP
-Time O()
+Time O(m*n^2)
 Space O(m*n^2)
 Let dp[r,c1,c2] be maxium cherry we can collect start at row r, robot 1 at col c1, robot 2 at col c2.
 return dp[0,0,col-2]
