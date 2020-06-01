@@ -5,8 +5,8 @@ namespace LeetCodePractice.SimpleWarmUp
 {
     class EqualArray
     {
-        static void Main()
-        //static void Main1460()
+        //static void Main()
+        static void Main1460()
         {
             int[] nums = { 1, 4, 3, 2 };
             int[] nums2 = { 1, 2, 3, 4 };
