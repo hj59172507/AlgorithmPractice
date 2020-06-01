@@ -9,8 +9,8 @@ namespace LeetCodePractice.DataStructure.Tree
 {
     class InvertBinaryTree
     {
-        static void Main()
-        //static void MainJuly1st2020()
+        //static void Main()
+        static void MainJuly1st2020()
         {
             TreeNode root = new TreeNode(4,
                                          new TreeNode(2, new TreeNode(1), new TreeNode(3)),
