@@ -47,8 +47,8 @@ namespace LeetCodePractice.Geeky
 {
     class BinarySubstring
     {
-        static void Main()
-        //static void Main1461()
+        //static void Main()
+        static void Main1461()
         {
             string s = "00110";
             int k = 2;

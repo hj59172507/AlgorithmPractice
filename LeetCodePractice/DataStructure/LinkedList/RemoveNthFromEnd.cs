@@ -32,6 +32,7 @@ namespace LeetCodePractice.DataStructure.LinkedList
             Console.Out.WriteLine(RemoventhFromEnd(head, n));
             Console.In.ReadLine();
         }
+
         public static ListNode RemoventhFromEnd(ListNode head, int n)
         {
             if (head.next == null)
