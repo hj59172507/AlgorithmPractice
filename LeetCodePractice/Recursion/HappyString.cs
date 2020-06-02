@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 /*
 1415. The k-th Lexicographical String of All Happy Strings of Length n
 A happy string is a string that:
