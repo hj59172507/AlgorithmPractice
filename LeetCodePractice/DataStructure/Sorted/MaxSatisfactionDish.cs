@@ -50,8 +50,8 @@ namespace LeetCodePractice.DataStructure.Sorted
 {
     class MaxSatisfactionDish
     {
-        static void Main()
-        //static void Main1402()
+        //static void Main()
+        static void Main1402()
         {
             int[] s = { 3, -2, -1, 0, 5, -3 };
             Console.Out.WriteLine(MaxSatisfaction(s));
