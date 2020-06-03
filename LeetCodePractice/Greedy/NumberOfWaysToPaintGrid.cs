@@ -49,8 +49,8 @@ namespace LeetCodePractice.Greedy
 {
     class NumberOfWaysToPaintGrid
     {
-        static void Main()
-        //static void Main1411()
+        //static void Main()
+        static void Main1411()
         {
             int n = 5000;
             Console.Out.WriteLine(NumOfWays(n));
