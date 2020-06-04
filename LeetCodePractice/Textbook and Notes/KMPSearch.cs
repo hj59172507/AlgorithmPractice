@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LeetCodePractice.Textbook_and_Notes
+﻿namespace LeetCodePractice.Textbook_and_Notes
 {
     class KMPSearch
     {
@@ -12,8 +6,8 @@ namespace LeetCodePractice.Textbook_and_Notes
         public static bool KMPSearchString(string s, string pat)
         {
             int j = 0, i = 0;
-            int[] lps = new int[pat.Length];
-            GetLPSArray(pat, lps);
+            int[] lps = GetLPSArray(pat);
+
             while (i < s.Length)
             {
                 if (s[i] == pat[j])//there is a match
@@ -34,28 +28,16 @@ namespace LeetCodePractice.Textbook_and_Notes
 
         //lps[i] = the longest proper prefix of pat[0..i] which is also a suffix of pat[0..i]         
         //proper prefix is a prefix of string s but not including s, E.g. proper subset
-        public static void GetLPSArray(string pat, int[] lps)
+        public static int[] GetLPSArray(string str)
         {
-            int len = 0; //Previous lps;
-            int i = 1; //start with 1 since lps[0] is always 0
-            int m = pat.Length;
-            lps[0] = 0;
-            while (i < m)
+            int n = str.Length;
+            int[] lps = new int[n];
+            for (int i = 1, j = 0; i < n; i++)
             {
-                if (pat[i] == pat[len])
-                {
-                    //match, set lps[i] 1 + len
-                    lps[i++] = ++len;
-                }
-                //no match
-                if (len != 0)
-                {
-                    //still have some match to check
-                    len = pat[len - 1];
-                }
-                //len == 0
-                lps[i++] = 0;
+                while (j > 0 && str[i] != str[j]) j = lps[j - 1];
+                if (str[i] == str[j]) lps[i] = ++j;
             }
+            return lps;
         }
     }
 }
