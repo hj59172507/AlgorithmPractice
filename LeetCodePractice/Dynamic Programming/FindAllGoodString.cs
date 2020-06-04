@@ -41,7 +41,7 @@ Using KMP to keep track of number of matching evil string, cost is only O(m)
 namespace LeetCodePractice.Dynamic_Programming
 {
     class FindAllGoodString
-    {
+    {        
         //static void Main()
         static void Main1397()
         {

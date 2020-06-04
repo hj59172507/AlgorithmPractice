@@ -1,7 +1,7 @@
 ﻿namespace LeetCodePractice.Textbook_and_Notes
 {
     class KMPSearch
-    {
+    {       
         //Find if s contain pat in O(n) using KMP algorithm https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm        
         public static bool KMPSearchString(string s, string pat)
         {
