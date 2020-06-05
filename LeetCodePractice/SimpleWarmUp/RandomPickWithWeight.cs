@@ -30,8 +30,8 @@ namespace LeetCodePractice.SimpleWarmUp
 {
     class RandomPickWithWeight
     {
-        static void Main()
-        //static void Main2020June5()
+        //static void Main()
+        static void Main2020June5()
         {
             RandomPickWithWeight r = new RandomPickWithWeight(new int[]{ 1,2,3,4,5 });
             for(int i = 0; i < 15; ++i)
