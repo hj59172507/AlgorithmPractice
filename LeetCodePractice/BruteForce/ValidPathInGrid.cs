@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 /*
 1391. Check if There is a Valid Path in a Grid
 
@@ -61,13 +55,13 @@ namespace LeetCodePractice.BruteForce
 {
     class ValidPathInGrid
     {
-        static void Main()
-        //static void Main1392()
+        //static void Main()
+        static void Main1392()
         {
             //int[][] grid = { new int[] {1,2,1},
             //                 new int[] {1,2,1} };
             int[][] grid = { new int[] {4,1},
-                             new int[] {6,1} };
+                             new int[] {6,1} };            
             Console.Out.WriteLine(HasValidPath(grid));
             Console.In.ReadLine();
         }
@@ -84,9 +78,11 @@ namespace LeetCodePractice.BruteForce
             bool step1, step2;
             int newI = i + dir[grid[i][j] - 1][0], newJ = j + dir[grid[i][j] - 1][1], newI2 = i + dir[grid[i][j] - 1][2], newJ2 = j + dir[grid[i][j] - 1][3];
             step1 = (newI < 0 || newI >= row || newJ < 0 || newJ >= col || visited[newI, newJ]) ? 
-                    false : newI + dir[grid[newI][newJ] - 1][0] == i && newJ + dir[grid[newI][newJ] - 1][1] == j || newI + dir[grid[newI][newJ] - 1][2] == i && newJ + dir[grid[newI][newJ] - 1][3] == j;
+                    false : newI + dir[grid[newI][newJ] - 1][0] == i && newJ + dir[grid[newI][newJ] - 1][1] == j 
+                    || newI + dir[grid[newI][newJ] - 1][2] == i && newJ + dir[grid[newI][newJ] - 1][3] == j;
             step2 = (newI2 < 0 || newI2 >= row || newJ2 < 0 || newJ2 >= col || visited[newI2, newJ2]) ? 
-                    false : newI2 + dir[grid[newI2][newJ2] - 1][0] == i && newJ2 + dir[grid[newI2][newJ2] - 1][1] == j || newI2 + dir[grid[newI2][newJ2] - 1][2] == i && newJ2 + dir[grid[newI2][newJ2] - 1][3] == j;
+                    false : newI2 + dir[grid[newI2][newJ2] - 1][0] == i && newJ2 + dir[grid[newI2][newJ2] - 1][1] == j 
+                    || newI2 + dir[grid[newI2][newJ2] - 1][2] == i && newJ2 + dir[grid[newI2][newJ2] - 1][3] == j;
             bool try1 = step1 ? dfs(grid, i + dir[grid[i][j] - 1][0], j + dir[grid[i][j] - 1][1], row, col, visited) : false;
             bool try2 = step2 ? dfs(grid, i + dir[grid[i][j] - 1][2], j + dir[grid[i][j] - 1][3], row, col, visited) : false;
             return try1 || try2;
