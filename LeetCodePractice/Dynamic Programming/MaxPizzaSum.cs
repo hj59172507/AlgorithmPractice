@@ -48,8 +48,8 @@ namespace LeetCodePractice.Dynamic_Programming
 {
     class MaxPizzaSum
     {   
-        static void Main()
-        //static void Main1388()
+        //static void Main()
+        static void Main1388()
         {
             int[] slices = {1,2,3,4,5,6 };
             Console.Out.WriteLine(MaxSizeSlices(slices));
