@@ -31,8 +31,8 @@ namespace LeetCodePractice.BruteForce
 {
     class FourDivisors
     {
-        static void Main()
-        //static void Main1390()
+        //static void Main()
+        static void Main1390()
         {            
             int[] nums = { 7286, 18704, 70773, 8224, 91675 };
             Console.Out.WriteLine(SumFourDivisors(nums));
