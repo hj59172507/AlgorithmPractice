@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 /*
 1386. Cinema Seat Allocation
 A cinema has n rows of seats, numbered from 1 to n and there are ten seats in each row, labelled from 1 to 10 as shown in the figure above.
@@ -37,6 +35,10 @@ reservedSeats[i].length == 2
 All reservedSeats[i] are distinct.
 
 Sol
+Time O(n)
+Space O(n)
+Map row to list of int with 2 value, first is 0 if seat 2-5 is reserved, second value is 0 if 4-7 is reserved, and third value is 0 if 6-9 is reserved.
+For each row, if row not in map, add 2. Else, or 3 values and add the result.
  */
 namespace LeetCodePractice.Greedy
 {
@@ -45,13 +47,39 @@ namespace LeetCodePractice.Greedy
         //static void Main()
         static void Main1386()
         {
-            int lo = 1, hi = 1000, k = 777;
-            //Console.Out.WriteLine(MaxNumberOfFamilies(lo, hi, k));
+            int n = 2;
+            int[][] seats = { new int[] { 2, 1 }, new int[] { 1, 8 }, new int[] { 2, 6 }};
+            Console.Out.WriteLine(MaxNumberOfFamilies(n, seats));
             Console.In.ReadLine();
         }
-        public int MaxNumberOfFamilies(int n, int[][] reservedSeats)
+        public static int MaxNumberOfFamilies(int n, int[][] reservedSeats)
         {
-            return 0;
+            int ans = 0;
+            Dictionary<int, int[]> rowToSeats = new Dictionary<int, int[]>();
+
+            foreach(int[] i in reservedSeats)
+            {
+                if (!rowToSeats.ContainsKey(i[0]))
+                {
+                    if (i[1] < 2 || i[1] > 9) continue;
+                    rowToSeats[i[0]] = new int[] { 1, 1, 1 };
+                    if (i[1] >= 2 && i[1] <= 5) rowToSeats[i[0]][0] = 0;
+                    if (i[1] >= 4 && i[1] <= 7) rowToSeats[i[0]][1] = 0;
+                    if (i[1] >= 6 && i[1] <= 9) rowToSeats[i[0]][2] = 0;
+                }
+                else
+                {
+                    if (i[1] >= 2 && i[1] <= 5) rowToSeats[i[0]][0] = 0;
+                    if (i[1] >= 4 && i[1] <= 7) rowToSeats[i[0]][1] = 0;
+                    if (i[1] >= 6 && i[1] <= 9) rowToSeats[i[0]][2] = 0;
+                }                    
+            }
+            ans += 2 * (n - rowToSeats.Count());
+            foreach (int i in rowToSeats.Keys)
+            {
+                ans += rowToSeats[i][0] | rowToSeats[i][1] | rowToSeats[i][2];
+            }
+            return ans;
         }
     }
 }

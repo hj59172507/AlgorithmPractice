@@ -27,8 +27,8 @@ namespace LeetCodePractice.SimpleWarmUp
 {
     class QueueReconstructionByHeight
     {
-        static void Main()
-        //static void Main1386()
+        //static void Main()
+        static void Main1386()
         {
             int[][] people= { new int[] { 7, 0 }, new int[] { 4, 4 }, new int[] { 7, 1 }, new int[] { 5, 0 }, new int[] { 6, 1 }, new int[] { 5, 2 }, };
             Console.Out.WriteLine(ReconstructQueue(people));
