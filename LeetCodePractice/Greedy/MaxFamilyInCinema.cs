@@ -37,8 +37,9 @@ All reservedSeats[i] are distinct.
 Sol
 Time O(n)
 Space O(n)
-Map row to list of int with 2 value, first is 0 if seat 2-5 is reserved, second value is 0 if 4-7 is reserved, and third value is 0 if 6-9 is reserved.
+Map row to list of int with 2 value, first is 0 if seat 2-5 is reserved, second value is 0 if 4-7 is reserved, and third value is 0 if 6-9 is reserved. Can also use bitmap since max seat is 10.
 For each row, if row not in map, add 2. Else, or 3 values and add the result.
+
  */
 namespace LeetCodePractice.Greedy
 {
@@ -55,29 +56,28 @@ namespace LeetCodePractice.Greedy
         public static int MaxNumberOfFamilies(int n, int[][] reservedSeats)
         {
             int ans = 0;
-            Dictionary<int, int[]> rowToSeats = new Dictionary<int, int[]>();
+            Dictionary<int, int> rowToSeats = new Dictionary<int, int>();
 
             foreach(int[] i in reservedSeats)
             {
                 if (!rowToSeats.ContainsKey(i[0]))
                 {
                     if (i[1] < 2 || i[1] > 9) continue;
-                    rowToSeats[i[0]] = new int[] { 1, 1, 1 };
-                    if (i[1] >= 2 && i[1] <= 5) rowToSeats[i[0]][0] = 0;
-                    if (i[1] >= 4 && i[1] <= 7) rowToSeats[i[0]][1] = 0;
-                    if (i[1] >= 6 && i[1] <= 9) rowToSeats[i[0]][2] = 0;
+                    rowToSeats[i[0]] = 1 << i[1];
                 }
                 else
                 {
-                    if (i[1] >= 2 && i[1] <= 5) rowToSeats[i[0]][0] = 0;
-                    if (i[1] >= 4 && i[1] <= 7) rowToSeats[i[0]][1] = 0;
-                    if (i[1] >= 6 && i[1] <= 9) rowToSeats[i[0]][2] = 0;
+                    rowToSeats[i[0]] = rowToSeats[i[0]] | 1 << i[1];
                 }                    
             }
             ans += 2 * (n - rowToSeats.Count());
             foreach (int i in rowToSeats.Keys)
             {
-                ans += rowToSeats[i][0] | rowToSeats[i][1] | rowToSeats[i][2];
+                int cnt = 0;
+                if ( (rowToSeats[i] & 60) == 0) cnt++;
+                if ( (rowToSeats[i] & 960) == 0) cnt++;
+                if ( (rowToSeats[i] & 240) == 0 && cnt == 0) cnt++;
+                ans += cnt;
             }
             return ans;
         }
