@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.PerformanceData;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 /*
 There is a row of m houses in a small city, each house must be painted with one of the n colors (labeled from 1 to n), some houses that has been painted last summer should not be painted again.
 
@@ -59,8 +54,8 @@ namespace LeetCodePractice.Dynamic_Programming
 {
     class MinCostToPaintHouses
     { 
-        static void Main()
-        //static void Main1473()
+        //static void Main()
+        static void Main1473()
         {
             int[] houses = { 0, 0, 0, 0, 0 };
             int[][] cost = { new int[] { 1, 10 }, new int[] { 10, 1 }, new int[] { 10, 1 }, new int[] { 1, 10 }, new int[] { 5, 1 } };
