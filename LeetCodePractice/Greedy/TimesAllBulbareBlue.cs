@@ -50,8 +50,8 @@ namespace LeetCodePractice.Greedy
     {
         //static void Main()
         static void Main1375()
-        {
-            int[] lights = { 2, 1, 3, 5, 4 };
+        {                        
+            int[] lights = { 2, 1, 3, 5, 4 };            
             Console.Out.WriteLine(NumTimesAllBlue(lights));
             Console.In.ReadLine();
         }
