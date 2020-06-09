@@ -60,8 +60,8 @@ namespace LeetCodePractice.Dynamic_Programming
 {
     class MinCostToDestination
     {   
-        static void Main()
-        //static void Main1368()
+        //static void Main()
+        static void Main1368()
         {
             int[][] grid = { new int[] { 1, 1, 1, 1 }, new int[] { 2, 2, 2, 2 }, new int[] { 1, 1, 1, 1 }, new int[] { 2, 2, 2, 2 } };
             Console.Out.WriteLine(MinCost(grid));
