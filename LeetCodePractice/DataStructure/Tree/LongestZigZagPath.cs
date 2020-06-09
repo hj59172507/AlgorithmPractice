@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 /*
 1372. Longest ZigZag Path in a Binary Tree
 
@@ -45,8 +41,8 @@ namespace LeetCodePractice.DataStructure.Tree
 {
     class LongestZigZagPath
     {
-        static void Main()
-        //static void Main1372()
+        //static void Main()
+        static void Main1372()
         {
             TreeNode root = new TreeNode(4, new TreeNode(3, new TreeNode(1), new TreeNode(2)));
             Console.Out.WriteLine(LongestZigZag(root));
