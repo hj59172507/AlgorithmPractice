@@ -51,7 +51,7 @@ namespace LeetCodePractice.DataStructure.Tree
     {
         //static void Main()
         static void Main1375()
-        {
+        {    
             TreeNode root = new TreeNode(4, new TreeNode(3, new TreeNode(1), new TreeNode(2)));
             Console.Out.WriteLine(MaxSumBST(root));
             Console.In.ReadLine();
