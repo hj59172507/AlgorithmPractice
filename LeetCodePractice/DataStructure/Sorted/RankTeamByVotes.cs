@@ -57,8 +57,12 @@ All the characters that occur in votes[0] also occur in votes[j] where 1 <= j < 
 
 Sol
 Time O(26n) n = length of votes
+Space O(1)
 Since there are at most 1000 voters, we can assign a value to each rank. rank 1 = 1000^26, rank 2 = 1000^25 and etc.
 If two value are the same, we order them by alphabetically.
+
+Sol2 Counting vote
+Count all the vote for each rank, and sort them.
  */
 namespace LeetCodePractice.DataStructure.Sorted
 {
@@ -77,7 +81,7 @@ namespace LeetCodePractice.DataStructure.Sorted
                     else teamScore[team] = Math.Pow(power, n-i);
                 }
             }
-            IEnumerable<char> cc = teamScore.Keys.OrderByDescending(x => teamScore[x]).ThenBy(x => x);//sort by assign value, then by team name
+            IEnumerable<char> cc = teamScore.Keys.OrderBy(x => -teamScore[x]).ThenBy(x => x);//sort by assign value, then by team name
             return new string(cc.ToArray());
         }
     }
