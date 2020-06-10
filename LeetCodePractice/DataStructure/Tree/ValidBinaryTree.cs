@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 /*
 1361. Validate Binary Tree Nodes
 
@@ -34,6 +30,12 @@ Constraints:
 1 <= n <= 10^4
 leftChild.length == rightChild.length == n
 -1 <= leftChild[i], rightChild[i] <= n - 1
+
+Sol
+Time O(n)
+Space O(n)
+A valid tree satisfy that all node except root have exactly one parent, and root have no parent.
+Also check that there is only one connected graph.
  */
 namespace LeetCodePractice.DataStructure.Tree
 {
@@ -41,7 +43,37 @@ namespace LeetCodePractice.DataStructure.Tree
     {
         public bool ValidateBinaryTreeNodes(int n, int[] leftChild, int[] rightChild)
         {
+            if (n == 1) return true;
+            bool[] haveParent = new bool[n], connected = new bool[n];
+            int temp = n;
+            for(int i = 0; i < n; ++i)
+            {
+                if (leftChild[i] != -1)
+                {
+                    if(haveParent[leftChild[i]]) return false;
+                    else
+                    {
+                        connected[i] = true;
+                        connected[leftChild[i]] = true;
+                        haveParent[leftChild[i]] = true;                        
+                        --temp;
+                    }
+                }
+                if (rightChild[i] != -1)
+                {
+                    if (haveParent[rightChild[i]]) return false;
+                    else
+                    {
+                        connected[i] = true;
+                        connected[rightChild[i]] = true;
+                        haveParent[rightChild[i]] = true;
+                        --temp;
+                    }
+                }
 
+            }
+            return temp == 1 && connected.All(x => x);
         }
+
     }
 }
