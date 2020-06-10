@@ -34,22 +34,15 @@ Space O(1)
 """
 
 
-def numberOfSubstrings(s: str) -> int:
-    res, n, i, j = 0, len(s), 0, 0
-    dicts = {"a": 0, "b": 0, "c": 0}
-    validStr = False
-    while True:
-        if validStr:
-            print(i, j, n-j, dicts)
-            res += n - j + 1
-            dicts[s[i]] -= 1
+def numberOfSubstrings(s):
+    res = i = 0
+    count = {c: 0 for c in 'abc'}
+    for j in range(len(s)):
+        count[s[j]] += 1
+        while all(count.values()):
+            count[s[i]] -= 1
             i += 1
-        else:
-            if j == n:
-                return res
-            dicts[s[j]] += 1
-            j += 1
-        validStr = dicts["a"] > 0 and dicts["b"] > 0 and dicts["c"] > 0
+        res += i
     return res
 
 
