@@ -16,17 +16,17 @@ class MinHeap:
     def __init__(self):
         self.heap = []
     
-    #get parent index from childIndex
+    #get parent index from child_index
     def parent(self, childIndex):
         if(childIndex == 0):
             return 0
         return (childIndex+1)//2-1
 
-    #get left child index from parentIndex
+    #get left child index from parent_index
     def left(self, parentIndex):
         return (parentIndex*2)+1
 
-    #get right child index from parentIndex
+    #get right child index from parent_index
     def right(self, parentIndex):
         return (parentIndex*2)+2
 
