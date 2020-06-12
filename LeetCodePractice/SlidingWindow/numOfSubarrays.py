@@ -42,6 +42,7 @@ keep a sum of k sub-array, there are only n - k + 1 of them
 """
 from typing import List
 
+
 class Solution:
     def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
         res, k_total = 0, 0
@@ -49,6 +50,6 @@ class Solution:
             k_total += arr[i]
         if k_total / k >= threshold: res += 1
         for i in range(k, len(arr)):
-            k_total = k_total + arr[i] - arr[i-k]
+            k_total = k_total + arr[i] - arr[i - k]
             if k_total / k >= threshold: res += 1
         return res
