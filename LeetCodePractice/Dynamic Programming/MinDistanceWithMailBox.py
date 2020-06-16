@@ -63,5 +63,6 @@ class Solution:
         for k in range(2, k + 1):
             for j in range(n - 1, k - 2, -1):
                 for i in range(k - 2, j):
+                    # dp[i] is min cost with k-1 mailbox, thus dp[i] + cost(i+1,j) is the min cost for k mailbox
                     dp[j] = min(dp[j], dp[i] + cost(i + 1, j))
         return dp[-1]
