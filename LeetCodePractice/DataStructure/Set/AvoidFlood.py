@@ -61,9 +61,7 @@ Constraints:
 Sol
 Time O(nlogn)
 Space O(n)
-
-
-
+Use greedy algorithm
 """
 import collections
 import heapq
