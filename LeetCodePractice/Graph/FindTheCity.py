@@ -44,6 +44,7 @@ Sol
 Time O(n^3)
 Space O(n^2)
 Use Floyd-Warshall's algorithm to find shortest distance for all node
+https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
 """
 import math
 from typing import List
