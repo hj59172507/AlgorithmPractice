@@ -25,13 +25,17 @@ Constraints:
 1 <= c <= 10^9
 
 Sol
-
+Time O(number of digit in binary)
+Space O(number of digit in binary)
+Brute force and compare each digit
+If a | b != c:
+1. if c == 1, then only 1 change needed
+2. if c == 0, then we need to change a and b to 0
 """
 
 
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
-        # max value have 30 bits in binary
         a = bin(a)[2:]
         b = bin(b)[2:]
         c = bin(c)[2:]
