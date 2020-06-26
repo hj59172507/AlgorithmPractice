@@ -1,16 +1,7 @@
 """
 1310. XOR Queries of a Subarray
-Medium
 
-211
-
-11
-
-Add to List
-
-Share
 Given the array arr of positive integers and the array queries where queries[i] = [Li, Ri], for each query i compute the XOR of elements from Li to Ri (that is, arr[Li] xor arr[Li+1] xor ... xor arr[Ri] ). Return an array containing the result for the given queries.
-
 
 Example 1:
 
@@ -31,7 +22,6 @@ Example 2:
 
 Input: arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]
 Output: [8,0,4,4]
-
 
 Constraints:
 
