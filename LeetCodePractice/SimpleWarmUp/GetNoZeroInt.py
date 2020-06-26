@@ -52,7 +52,7 @@ class Solution:
             n = n // 10
             if (d == 1 or d == 0) and n > 0:
                 a += step * (1 + d)
-                b += step * (9)
+                b += step * 9
                 n -= 1
             else:
                 a += step * 1
