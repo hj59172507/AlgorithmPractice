@@ -56,3 +56,5 @@ class Solution:
         for i in range(previousIndex, len(s)):
             res.append(chr(ord('`') + int(s[i])))
         return ''.join(res)
+        # one line regex
+        # return ''.join(chr(int(i[:2]) + 96) for i in re.findall(r'\d\d#|\d', s))
