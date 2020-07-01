@@ -41,6 +41,8 @@ Constraints:
 1 <= target <= 10^6
 
 Sol
+Time O(nlogn)
+Space O(1)
 Since we are looking for subsequence, order doesn't matter.
 We can sort the array, and loop from min value, for each value, look for max value such that max + min <= target
 Then for min at i and max at j, there are exactly 2^(j-i) sub-array satisfy given condition
