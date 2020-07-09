@@ -2,6 +2,7 @@ import random
 
 
 # sort arr using quick sort with left tail recursion to save stack memory space
+# expected time is O(nlogn) with O(logn) recursion stack
 def quick_sort(arr, l, r):
     while l < r:
         p = random_partition(arr, l, r)
@@ -32,3 +33,10 @@ for i in range(50):
 print(arr)
 quick_sort(arr, 0, len(arr) - 1)
 print(arr)
+
+# variation:
+# 3 median pivot: randomly pick 3 indexes, and use median as pivot, it improves performance by constant factor
+# Use insertion for small enough partition size k, run time is O(nk + nlog(n/k))
+# since we stop if size of subarray is smaller than k, there are expected log(n/k) recursion
+# to minimize O(nk + nlog(n/k)), we take derivative with respect to k and set to 0, we get n - n/k = 0
+# hence when k = 1/n^2, we get minimum run time
