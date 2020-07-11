@@ -44,7 +44,6 @@ Observe that we are trying to find the smallest integer to right of current digi
 a brute force of n^2 would solve it but using Fenwick tree, we can achieve nlogn
 Fenwick tree:https://en.wikipedia.org/wiki/Fenwick_tree
 """
-import math
 
 
 class FenWick(object):
