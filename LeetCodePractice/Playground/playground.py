@@ -1,19 +1,14 @@
-def multiple35():
-    m = []
-    for i in range(1, 201):
-        if i % 3 == 0 or i % 5 == 0:
-            m.append(i)
-        print(m)
-        print(len(m))
+def cellCompete(states, days):
+    # WRITE YOUR CODE HERE
+    prevStates = [0] + states + [0]
+    newStates = [i for i in prevStates]
+    print(len(states), len(prevStates), len(newStates))
+    for i in range(days):
+        for j in range(1, len(states)+1):
+            newStates[j] = 1 if prevStates[j-1] != prevStates[j+1] else 0
+        prevStates = [i for i in newStates]
+    return newStates[1:len(newStates)]
 
-
-from datetime import datetime
-
-s = '2020/6/29'
-
-from datetime import datetime, timedelta
-
-datetime_object = datetime.strptime(s, '%Y/%m/%d')
-print(datetime_object.weekday())
-print(datetime_object + timedelta(days=1))
-
+s = [1,0,0,0,0,1,0,0]
+d = 1
+print(cellCompete(s, d))
