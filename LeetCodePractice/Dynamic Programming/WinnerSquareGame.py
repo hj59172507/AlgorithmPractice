@@ -42,7 +42,7 @@ Constraints:
 1 <= n <= 10^5
 
 Sol
-Time O(nlogn) n iteration, each iteration have up to log(n) square number
+Time O(n^1.5) n iteration, each iteration have up to square root n of checking
 Space O(n)
 Let res[i] be the result of game if Alice start with i number of stones
 """
