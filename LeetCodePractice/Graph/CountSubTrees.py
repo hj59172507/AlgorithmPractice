@@ -51,39 +51,38 @@ Time O(n)
 Space O(n)
 Let function getCountDict return a dictionary contain freq of of label including itself and its children
 If current node has no child, it will simply return dictionary with itself, else it will append itself to dictionary return by its child(ren)
+Note, adding counter dependent on counter size, but here max is a constant 26 so won't have time complexity nlogn overall
 
 Extension: Change the problem so that we don't know the root, thus adding code to find root, which take O(n^2)
 Sol2:
 Time O(n^2)
 Space O(n)
 Extra step to find root by constructing tree with each node, if total tree has n node, then it is tree.
+Note that such tree construction doesn't yield unique result
 Rest is same as problem 1 using dfs
 """
 import collections
 import queue
-from typing import List
+from typing import List, Counter
 
 
 class Solution:
     def countSubTrees(self, n: int, edges: List[List[int]], labels: str) -> List[int]:
-        # construct parent to children relationship using dictionary
+        # construct undirected parent to children relationship
         children = collections.defaultdict(list)
         for e in edges:
             children[e[0]].append(e[1])
             children[e[1]].append(e[0])
         res = [0] * n
 
+        # dfs to get count if its children
         def getCountDict(node, p):
-            d = collections.defaultdict(int)
-            for c in children[node]:
-                if c != p:
-                    temp = getCountDict(c, node)
-                    for k in temp.keys():
-                        d[k] += temp[k]
-            d[labels[node]] += 1
-            res[node] = d[labels[node]]
-            return d
-
+            cnt = collections.Counter(labels[node])
+            for child in children[node]:
+                if child != p:
+                    cnt += getCountDict(child, node)
+            res[node] = cnt[labels[node]]
+            return cnt
         getCountDict(0, -1)
         return res
 
@@ -98,7 +97,7 @@ class Solution2:
 
         # find root
         root = -1
-        # children will store the only possible parent to children structure relationship
+        # children will store the one possible parent to children structure relationship
         children = collections.defaultdict(list)
         for i in range(n):
             childrenSet = {i}
