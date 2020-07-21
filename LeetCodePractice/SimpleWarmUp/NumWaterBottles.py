@@ -39,6 +39,13 @@ Space O(1)
 while bottles > 1
 Add num of bottles, and convert then to empty bottles.
 Then convert empty bottles back to bottles, keep track of left over empty bottles
+
+Sol2
+Time O(1)
+Space O(1)
+Math derivation from the rule
+see:
+https://leetcode.com/problems/water-bottles/discuss/745231/Python-1-liner-with-math-explained
 """
 
 
@@ -51,3 +58,7 @@ class Solution:
             numBottles = empty // numExchange
             empty %= numExchange
         return res
+
+class Solution2:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        return numBottles + (numBottles - 1) // (numExchange - 1)
