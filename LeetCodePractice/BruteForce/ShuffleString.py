@@ -1,10 +1,6 @@
 """
 Shuffle String
-User Accepted:6465
-User Tried:6585
-Total Accepted:6555
-Total Submissions:7669
-Difficulty:Easy
+
 Given a string s and an integer array indices of the same length.
 
 The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.

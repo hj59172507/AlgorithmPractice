@@ -1,10 +1,6 @@
 """
 Number of Good Leaf Nodes Pairs
-User Accepted:2046
-User Tried:2883
-Total Accepted:2092
-Total Submissions:4955
-Difficulty:Medium
+
 Given the root of a binary tree and an integer distance. A pair of two different leaf nodes of a binary tree is said to be good if the length of the shortest path between them is less than or equal to distance.
 
 Return the number of good leaf node pairs in the tree.
