@@ -40,15 +40,20 @@ Constraints:
 
 1 <= target.length <= 10^5
 target[i] == '0' or target[i] == '1'
+
+Sol
+Time O(n)
+Space O(1)
+Start from i position in array with current light bulb status b, if b == target[i], then we do nothing.
+Else we add 1 to answer and flip b. This make sure we get minimum flip need b/c ever flip is necessary
 """
 
 
 class Solution:
     def minFlips(self, target: str) -> int:
-        turn = 0
-        current = 0
+        turn, currentStatus = 0, 0
         for b in target:
-            if current != int(b):
-                current = (current + 1)%2
+            if currentStatus != int(b):
+                currentStatus = (currentStatus + 1)%2
                 turn += 1
         return turn

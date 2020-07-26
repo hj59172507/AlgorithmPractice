@@ -37,6 +37,11 @@ s.length == indices.length == n
 s contains only lower-case English letters.
 0 <= indices[i] < n
 All values of indices are unique (i.e. indices is a permutation of the integers from 0 to n - 1).
+
+Sol
+Time O(n)
+Space O(n)
+Follow the rules and update array
 """
 from typing import List
 

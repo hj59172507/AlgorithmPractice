@@ -35,6 +35,14 @@ Constraints:
 The number of nodes in the tree is in the range [1, 2^10].
 Each node's value is between [1, 100].
 1 <= distance <= 10
+
+Sol
+Time O(n^2logn)
+Space O(nlogn)
+Worst case is when we have n/2 leaves, each leaf will compare to all other leaves, hence in order of n^2 comparison.
+Each comparision take at most log(n) operation since we assume n/2 leaves, height is log(n)
+And we are store path to each leaves, thus nlogn space is needed
+Note, path can also be store using bits since all we need is 0 and 1.
 """
 from DataStructure.Tree import TreeNode
 
