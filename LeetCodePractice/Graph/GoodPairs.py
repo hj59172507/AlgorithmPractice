@@ -40,3 +40,32 @@ The number of nodes in the tree is in the range [1, 2^10].
 Each node's value is between [1, 100].
 1 <= distance <= 10
 """
+from DataStructure.Tree import TreeNode
+
+
+class Solution:
+    def countPairs(self, root: TreeNode, distance: int) -> int:
+        leafPath = set()
+
+        def getPath(node: TreeNode, path: str):
+            if not node.left and not node.right:
+                leafPath.add(path)
+                return
+            if node.left:
+                getPath(node.left, path+'l')
+            if node.right:
+                getPath(node.right, path+'r')
+
+        getPath(root, "")
+        res = 0
+        while leafPath:
+            path = leafPath.pop()
+            for path2 in leafPath:
+                i = 0
+                while path[i] == path2[i]:
+                    i += 1
+                if (len(path) - i) + (len(path2) - i) <= distance:
+                    res += 1
+        return res
+
+
