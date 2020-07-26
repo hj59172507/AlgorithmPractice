@@ -30,31 +30,35 @@ Constraints:
 1 <= s.length <= 100
 0 <= k <= s.length
 s contains only lowercase English letters.
+
+Sol
+Time O(n^2*k)
+Space O(n^2*k)
 """
-import collections
+from functools import lru_cache
 
 
 class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
-        compS = ""
-        l, i, c = 1, 1, s[0]
-        lengthCount = collections.defaultdict(int)
-        while i < len(s):
-            if s[i] == c:
-                l += 1
+        @lru_cache(None)
+        def counter(start, last, count, left):  # count increase from start
+            # if we over use chance to delete, then this is invalid answer
+            if left < 0:
+                return float('inf')
+            # we reach the end
+            if start >= len(s):
+                return 0
+            if s[start] == last:
+                # if current letter appear right before 1, 9 or 99 time, adding this one will increase result by 1, else 0
+                # we have already consider case that first occurrence of this letter is deleted, hence no need to worry about it now
+                incr = 1 if count == 1 or count == 9 or count == 99 else 0
+                return incr + counter(start + 1, last, count + 1, left)
             else:
-                c = s[i]
-                compS += c + str(l) if l > 1 else ""
-                lengthCount[l] += 1
-            i += 1
+                # return min of keep or delete current letter when first contact
+                # if we keep it, update last and its count
+                # else we update left
+                return min(1 + counter(start + 1, s[start], 1, left), counter(start + 1, last, count, left - 1))
 
-        res = len(compS)
-        # try remove letter with length 1, 2, 10 or 100, since it could reduce length of compS by 1 just with 1 delete
-        for i in [1, 2, 10, 100]:
-            res -= min(lengthCount[i], k)
-            k = max(0, k - lengthCount[i])
-            lengthCount[i] = 0
-        i = 2
-        while k > 0:
+        return counter(0, "", 0, k)
 
 
